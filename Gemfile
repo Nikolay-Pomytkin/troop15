@@ -24,5 +24,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Troop15 dependencies
 gem 'devise'
 gem 'devise_invitable'
-gem 'material_design_lite-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'material_icons'
