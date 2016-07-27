@@ -8,10 +8,55 @@
           </a>
         </div>
         <div class="navbar-right">
-          <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a>Home</a></li>
+            <li><a>Resources</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a>Announcements</a></li>
+            <li><a>Gallery</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span> <%= current_user.name %> <span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a>Profile</a></li>
+                <li><a>Account Settings</a></li>
+                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="text-center">Chat</h4>
+          </div>
+          <div class="panel-body">
+            Currently Online: <span class="label label-primary">Nikolay Pomytkin</span>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              dog
+            </li>
+            <Li class="list-group-item">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter message">
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">Send</button>
+                      </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 <% else %>
   <div class="container">
