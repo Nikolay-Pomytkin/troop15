@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Troop 15:</title>
+    <title>Troop15:
+    <% if current_page?(announcements_path)%> Announcements<% end %>    
+    <% if current_page?(root_path) %> Home<% end %>    
+    <% if current_page?(events_path) %> Events<% end %>    
+
+    </title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if current_page?(root_path) and !(user_signed_in?) %>
-      <div style="background-image: url('/images/GetImage (1).jpg'); background-size: cover;">
-    <% end %>
+
     <%= yield %>
     
   </body>

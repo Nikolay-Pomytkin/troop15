@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def welcome
-    @announcements = Announcement.all.first(6)
+    @announcements = Announcement.all.first(5)
   end
 
   #devise login form resources

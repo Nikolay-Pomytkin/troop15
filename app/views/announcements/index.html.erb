@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          Troop 15
+        </a>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
+          <li><a>Resources</a></li>
+          <li><a href="#">Events</a></li>
+          <li class="active"><%= link_to "Announcements", announcements_path %></li>
+          <li><a>Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span> <%= current_user.name %> <span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a>Profile</a></li>
+              <li><%= link_to('Account Settings', edit_user_registration_path) %></li>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row" style="margin-bottom: 5%;">
+    <div class="col-md-3 col-md-offset-4">
+      <h2>Announcements</h2>
+    </div>
+    <div class="col-md-2">
+      <%= link_to 'Create an Announcement', new_announcement_path, class: "btn btn-info", style: "margin-top: 10%;" %>
+    </div>
+  </div>
+  <div class="row">
+    <% @announcements.each do |announcement| %>
+      <div class="col-md-3">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <%= link_to announcement.title, announcement, style: "color: white;"%>
+            <br/>
+            <b>By: </b> <%= announcement.user.name %>
+          </div>
+          <div class="panel-body">
+            Info: <%= announcement.information %>
+            <br/><br/>
+            <% if current_user == announcement.user %>
+              <%= link_to 'Edit', edit_announcement_path(announcement), class: "btn btn-info" %>
+              <%= link_to 'Delete', announcement, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<br>
+

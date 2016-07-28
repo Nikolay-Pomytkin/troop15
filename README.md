@@ -1,24 +1,12 @@
-# README
+ToDo:
+- Make Chat
+- Create resources page
+- Create gallery
+- Finish all devise views
+- Finish all announcements views
+- Finish all events views
+- Create user profile page
+- integrate devise_inviteable
+- Create admin page
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Done: 
