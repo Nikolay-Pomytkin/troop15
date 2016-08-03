@@ -11,7 +11,7 @@
         <ul class="nav navbar-nav">
           <li><%= link_to "Home", root_path %></li>
           <li><a>Resources</a></li>
-          <li><a href="#">Events</a></li>
+          <li><%= link_to "Events", events_path %></li>
           <li class="active"><%= link_to "Announcements", announcements_path %></li>
           <li><a>Gallery</a></li>
           <li class="dropdown">
@@ -36,25 +36,29 @@
       <%= link_to 'Create an Announcement', new_announcement_path, class: "btn btn-info", style: "margin-top: 10%;" %>
     </div>
   </div>
-  <div class="row">
-    <% @announcements.each do |announcement| %>
-      <div class="col-md-3">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <%= link_to announcement.title, announcement, style: "color: white;"%>
-            <br/>
-            <b>By: </b> <%= announcement.user.name %>
-          </div>
-          <div class="panel-body">
-            Info: <%= announcement.information %>
-            <br/><br/>
-            <% if current_user == announcement.user %>
-              <%= link_to 'Edit', edit_announcement_path(announcement), class: "btn btn-info" %>
-              <%= link_to 'Delete', announcement, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
+  <% @announcements.each_slice(4) do |announcements| %>
+    <div class="row">
+      <% announcements.each do |announcement| %>
+        <div class="col-md-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <b style="font-size: larger;">
+                <%= announcement.title %>
+              </b>
+              <br/>
+              <b>By: </b> <%= announcement.user.name %>
+            </div>
+            <div class="panel-body">
+              Info: <%= announcement.information %>
+              <br/><br/>
+              <% if current_user == announcement.user %>
+                <%= link_to 'Edit', edit_announcement_path(announcement), class: "btn btn-info" %>
+                <%= link_to 'Delete', announcement, class: "btn btn-info", method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-<br>
+      <% end %>
+    </div>
+  <% end %>
 

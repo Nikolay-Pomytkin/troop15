@@ -10,23 +10,23 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :information %>
-    <%= f.text_area :information %>
-  </div>
-
-    <div class="field">
-      <%= f.label :user_id %><br>
-      <%= f.number_field :user_id %>
+<div class="panel panel-primary devise-bs">
+  <div class="panel-heading">
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <%= f.label :information %>
+      <%= f.text_area :information, class: "form-control" %>
+    </div>
+    
+    <%= f.hidden_field :user_id %>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="actions">
+      <%= f.submit "Create Announcement", :class => "btn btn-primary"%>
+    </div>
   </div>
 <% end %>

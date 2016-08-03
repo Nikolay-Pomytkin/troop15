@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events
-  resources :announcements
+  resources :announcements, :except => :show
   root to: 'pages#welcome'
 
   devise_for :users, :skip => [:registrations]                                          
