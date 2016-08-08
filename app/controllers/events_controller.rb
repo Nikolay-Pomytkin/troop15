@@ -17,6 +17,9 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def new_signup
+    @signup = Signup.new
+  end
   # GET /events/1/edit
   def edit
   end
@@ -37,6 +40,10 @@ class EventsController < ApplicationController
     end
   end
 
+  def create_signup
+    @signup = Signup.new_signup(signup_params)
+    redirect_to @signup.event
+  end
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
@@ -71,4 +78,9 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title, :information, :date, :user_id)
     end
+    
+    def signup_params
+      params.require(:signup).permit(:user_id, :event_id)
+    end
+    
 end

@@ -1,3 +1,15 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      clearBtn: true,
+      orientation: "bottom left",
+      multidate: true,
+      multidateSeparator: " ",
+      autoclose: true,
+      todayHighlight: true
+    });
+  });
+</script>
 <%= form_for(event) do |f| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -23,7 +35,7 @@
 
   <div class="field">
     <%= f.label :date %>
-    <%= f.text_field :date %>
+    <%= f.text_field :date, :class => 'datepicker' %>
   </div>
 
   <div class="field">

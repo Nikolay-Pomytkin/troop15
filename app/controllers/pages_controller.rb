@@ -3,6 +3,12 @@ class PagesController < ApplicationController
     @announcements = Announcement.all.first(5)
   end
 
+  def resource
+  end
+  
+  def admin
+  end
+  
   #devise login form resources
   helper_method :resource_name, :resource, :devise_mapping
 

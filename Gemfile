@@ -22,8 +22,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Troop15 dependencies
-gem 'devise'
-gem 'devise_invitable'
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'paperclip'
-gem 'hermitage'
+gem 'devise' #user accounts
+gem 'devise_invitable' #user invitation
+
+gem 'bootstrap-sass', '~> 3.3.6' #css framework
+
+gem 'paperclip' #image hosting
+gem 'hermitage' #image gallery
+gem 'bootstrap-datepicker-rails' #datepicker calendar

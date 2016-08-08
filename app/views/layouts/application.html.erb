@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>Troop15:
-    <% if current_page?(announcements_path)%> Announcements<% end %>    
+    <% if current_page?(announcements_path) or current_page?(new_announcement_path) %> Announcements<% end %>    
     <% if current_page?(root_path) %> Home<% end %>    
-    <% if current_page?(events_path) %> Events<% end %>    
+    <% if current_page?(events_path) or current_page?(new_event_path) %> Events<% end %>    
 
     </title>
     <%= csrf_meta_tags %>

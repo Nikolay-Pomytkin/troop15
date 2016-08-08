@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :announcements
+  has_many :events
+  has_many :signups
   
   def welcome
   end

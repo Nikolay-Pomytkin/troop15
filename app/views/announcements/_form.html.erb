@@ -1,3 +1,8 @@
+<% if current_page?(new_announcement_path) %>
+  <h3 class="text-center">
+    Creating Announcement  &ensp; <%= link_to "Back", announcements_path, class: "btn btn-info", style: "margin-bottom: 1%;" %>
+  </h3>
+<% end %>
 <%= form_for(announcement) do |f| %>
   <% if announcement.errors.any? %>
     <div id="error_explanation">
@@ -27,6 +32,12 @@
 
     <div class="actions">
       <%= f.submit "Create Announcement", :class => "btn btn-primary"%>
+      <% if current_page?(new_announcement_path) %>
+        <br/>
+        <i>
+          (Newly created announcements are automatically mailed to all scouts and parents.)
+        </i>
+      <% end %>
     </div>
   </div>
 <% end %>
