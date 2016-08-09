@@ -1,11 +1,51 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          Troop 15
+        </a>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
+          <li><a>Resources</a></li>
+          <li class="active"><%= link_to "Events", events_path %></li>
+          <li><%= link_to "Announcements", announcements_path %></li>
+          <li><a>Gallery</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span> <%= current_user.name %> <span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a>Profile</a></li>
+              <li><%= link_to('Account Settings', edit_user_registration_path) %></li>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">  
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Title: <%= @event.title%>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            Date: <div class="label label-info"><%= @event.date %></div>
+          </li>          
+          <li class="list-group-item">
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
   <strong>Information:</strong>
   <%= @event.information %>
 </p>

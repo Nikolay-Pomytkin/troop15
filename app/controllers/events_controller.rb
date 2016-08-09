@@ -41,7 +41,7 @@ class EventsController < ApplicationController
   end
 
   def create_signup
-    @signup = Signup.new_signup(signup_params)
+    @signup = Signup.new(signup_params)
     redirect_to @signup.event
   end
   # PATCH/PUT /events/1

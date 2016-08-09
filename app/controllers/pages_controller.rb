@@ -3,6 +3,9 @@ class PagesController < ApplicationController
     @announcements = Announcement.all.first(5)
   end
 
+  def gallery
+  end
+
   def resource
   end
   
