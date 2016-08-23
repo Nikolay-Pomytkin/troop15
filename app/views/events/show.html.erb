@@ -31,34 +31,39 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">  
       <div class="panel panel-primary">
-        <div class="panel-heading">
-          Title: <%= @event.title%>
+        <div class="panel-heading text-center">
+          <h3><%= @event.title %></h3>
+          <b>By:</b> <%= @event.user.name %>
         </div>
         <ul class="list-group">
           <li class="list-group-item">
-            Date: <div class="label label-info"><%= @event.date %></div>
+            <b>Date:</b> <div class="label label-info"><%= @event.date %></div>
           </li>          
           <li class="list-group-item">
-            
+            <b>Details:</b>
+            <br/>
+            <%= @event.information %>
           </li>
+          <li class="list-group-item">
+            <b>Signed up:</b>
+            <% if @event.signups.any? %>
+              <ul>
+                <% @event.signups.each do |signup| %>
+                  <li><%= signup.user.name %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              Noone has signed up for this event yet. Be the first!
+            <% end %>
+          </li>
+          <% if current_user == @event.user %>
+            <li class="list-group-item">
+              <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-info" %> 
+              <%= link_to 'Delete', @event, method: :delete, class: "btn btn-info", data: { confirm: 'Are you sure?' } %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
 </div>
-  <strong>Information:</strong>
-  <%= @event.information %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @event.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>

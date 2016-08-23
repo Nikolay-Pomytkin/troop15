@@ -36,10 +36,10 @@
       <%= link_to 'Create an Event', new_event_path, class: "btn btn-info", style: "margin-top: 10%;" %>
     </div>
   </div>
-  <% @events.each_slice(4) do |events| %>
+  <% @events.each_slice(3) do |events| %>
     <div class="row">
       <% events.each do |event|%>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="panel panel-primary">
             <div class="panel-heading text-center">
               <b style="font-size: larger;">
@@ -65,13 +65,19 @@
                   </ul>
                 <% else %>
                   <p>
-                    Noone has signed up for <b><%= event.title %></b> yet. Be the first!
+                    No one has signed up for <b><%= event.title %></b> yet. Be the first!
                   </p>
                 <% end %>
-                <%= button_to "Sign Up for #{event.title}", {action: "create_signup", params: {user_id: current_user.id, event_id: event.id}}, { class: "btn btn-primary", style: "margin-top: 1%;"} %>
+      
+                <% css_class = "btn btn-primary" %>
+                <% (css_class << " disabled") if event.signups.where(user: current_user).any? %>
+                <%= button_to "Sign Up for #{event.title}", { action: "create_signup", params: { signup: { user_id: current_user.id, event_id: event.id } } }, { class: css_class, style: "margin-top: 1%;" } %>
+              </li>
+
               <li class="list-group-item">
                 <b>Created by:</b> <%= event.user.name %>
               </li>
+
               <% if current_user == event.user %>
                 <li class="list-group-item">
                   <%= link_to 'Edit', edit_event_path(event), class: "btn btn-info" %> 
