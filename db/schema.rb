@@ -15,9 +15,11 @@ ActiveRecord::Schema.define(version: 20160805165811) do
   create_table "announcements", force: :cascade do |t|
     t.string   "title"
     t.text     "information"
+    t.integer  "author_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.index ["author_id"], name: "index_announcements_on_author_id"
   end
 
   create_table "events", force: :cascade do |t|

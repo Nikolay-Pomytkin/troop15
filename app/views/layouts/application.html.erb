@@ -2,19 +2,21 @@
 <html>
   <head>
     <title>Troop15:
-    <% if current_page?(announcements_path) or current_page?(new_announcement_path) %> Announcements<% end %>    
-    <% if current_page?(root_path) %> Home<% end %>    
-    <% if current_page?(events_path) or current_page?(new_event_path) %> Events<% end %>    
-
+    <% if current_page?(announcements_path) or current_page?(new_announcement_path) %> Announcements<% end %>
+    <% if current_page?(root_path) %> Home<% end %>
+    <% if current_page?(events_path) or current_page?(new_event_path) %> Events<% end %>
     </title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
+  <body style="font-family: 'Muli', sans-serif;">
+    <% if user_signed_in? %>
+      <%= render "layouts/navbar"%>
+    <% end %>
     <%= yield %>
-    
+
   </body>
 </html>

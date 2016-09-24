@@ -1,0 +1,30 @@
+<b>
+  <nav class="navbar navbar-default" style="  border-radius: 0 !important; -moz-border-radius: 0 !important; background-color: #331200; border-color: #1a0900">
+    <div class="container-fluid">
+      <div class="navbar-left">
+        <ul class="nav navbar-nav">
+          <li><a>HOME</a></li>
+          <li style=""><a>RESOURCES</a></li>
+          <li><%= link_to "EVENTS", events_path%></li>
+          <li><%= link_to "ANOUNCEMENTS", announcements_path %></li>
+          <li><a>GALLERY</a></li>
+
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span> <%= current_user.name %> <span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a>PROFILE</a></li>
+              <li><%= link_to('ACCOUNT SETTINGS', edit_user_registration_path) %></li>
+              <li><%= link_to('LOGOUT', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</b>

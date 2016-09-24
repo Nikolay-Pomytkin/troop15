@@ -1,33 +1,5 @@
 <% if user_signed_in? %>
-  <div class="container">
-    <nav class="navbar navbar-default" style="margin-top: 1%">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand">
-            Troop 15
-          </a>
-        </div>
-        <div class="navbar-right">
-          <ul class="nav navbar-nav">
-            <li class="active"><a>Home</a></li>
-            <li><a>Resources</a></li>
-            <li><%= link_to "Events", events_path%></li>
-            <li><%= link_to "Announcements", announcements_path %></li>
-            <li><a>Gallery</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span> <%= current_user.name %> <span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a>Profile</a></li>
-                <li><%= link_to('Account Settings', edit_user_registration_path) %></li>
-                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<div class="container">
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-primary">
