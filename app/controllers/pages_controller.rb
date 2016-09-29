@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def welcome
-    @announcements = Announcement.all.first(5)
+    @announcements = Announcement.all.last(4)
   end
 
   def gallery
@@ -8,10 +8,10 @@ class PagesController < ApplicationController
 
   def resource
   end
-  
+
   def admin
   end
-  
+
   #devise login form resources
   helper_method :resource_name, :resource, :devise_mapping
 

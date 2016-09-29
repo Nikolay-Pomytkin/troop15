@@ -1,48 +1,46 @@
 <% if user_signed_in? %>
-    <div class="row" style = "background-image: url('public/assets/forest-38bac07e5fcd6ab96fa1766c5a6e2c50a1adac730222867fc5d9f0b48fc38665.jpg'); padding-top: 10%;">
+    <div class="row" style="background-image: url(<%= image_url "forest.jpg" %>); background-size: 100% 100%; background-repeat: no-repeat; padding-top:7%; padding-bottom:26%;">
       <div class="col-md-5 col-md-offset-1">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h4 class="text-center">Chat</h4>
-          </div>
-          <div class="panel-body">
-            Currently Online: <span class="label label-primary">Nikolay Pomytkin</span>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item">
-              Test message <span class="badge">Nikolay Pomytkin</span>
-            </li>
-            <Li class="list-group-item">
-              <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter message">
-                      <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button">Send</button>
-                      </span>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-5">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="text-center">Announcements</h4>
           </div>
-          <ul class="list-group">
+          <ul class="list-group" style="background: rgba(76, 175, 80, 0.3)">
             <% @announcements.each do |announcement| %>
-              <li class="list-group-item">
-                <b>Title: </b> <%= announcement.title %>
-                <br/>
-                Created by: <%= announcement.user.name %>
-                <br/>
+              <li class="list-group-item" style="background-image: url(<%= image_url "white.png"%>);">
+                <u><b>Title: </b></u> <%= announcement.title %>
+                <h6>Created by: <%= announcement.user.name %></h6>
                 <b>Information:</b>  <%= announcement.information %>
               </li>
             <% end %>
           </ul>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="text-center">Chat</h4>
+        </div>
+        <div class="panel-body">
+          Currently Online: <span class="label label-primary">Nikolay Pomytkin</span>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            Test message <span class="badge">Nikolay Pomytkin</span>
+          </li>
+          <Li class="list-group-item">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter message">
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button">Send</button>
+                    </span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

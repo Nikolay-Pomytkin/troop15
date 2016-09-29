@@ -12,11 +12,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="font-family: 'Muli', sans-serif;">
+  <body style="font-family: 'Muli', sans-serif; border-radius: 0 !important; -moz-border-radius: 0 !important;">
+    <div style="-webkit-border-radius: 0 !important; -moz-border-radius: 0 !important; border-radius: 0 !important;">
     <% if user_signed_in? %>
       <%= render "layouts/navbar"%>
     <% end %>
     <%= yield %>
-
+  </div>
   </body>
 </html>
