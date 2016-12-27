@@ -12,5 +12,8 @@ module Troop15
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
       config.autoload_paths << Rails.root.join('lib')
+      config.action_mailer.delivery_method = :sendmail
+      config.action_mailer.perform_deliveries = true
+      config.action_mailer.raise_delivery_errors = true
   end
 end

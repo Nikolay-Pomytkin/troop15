@@ -25,12 +25,17 @@ class AnnouncementsController < ApplicationController
   # POST /announcements
   # POST /announcements.json
   def create
+    title = params[:title]
+    user_name = Users.find_by_id(params[:user_id])
+    user_email = Users.find_by_id(params[:user_id])
+    body = params[:information]
+    AnnouncementsMailer.announcement_email(title, user_email, user_name, body).deliver
     @announcement = current_user.announcements.build(announcement_params.merge(user_id: params[:user_id]))  #@announcement = Announcement.new(announcement_params)
     #    @guide = current_user.guides.build(guide_params.merge(course_id: params[:course_id]))
 
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to action: "index", notice: 'Announcement was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Announcement was successfully created and message was sent.' }
         format.json { render :show, status: :created, location: @announcement }
       else
         format.html { render :new }
