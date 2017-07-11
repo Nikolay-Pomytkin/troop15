@@ -4,24 +4,59 @@
       <div class="navbar-left">
         <ul class="nav navbar-nav">
           <li class="<% if current_page?(root_path) %>active<% end %>"><%= link_to "HOME", root_path%></li>
-          <li style=""><a>RESOURCES</a></li>
           <li class="<% if current_page?(events_path) %>active<% end %>"><%= link_to "EVENTS", events_path%></li>
           <li class="<% if current_page?(announcements_path) %>active<% end %>"><%= link_to "ANOUNCEMENTS", announcements_path %></li>
           <li><a>GALLERY</a></li>
+          <li style=""><a>RESOURCES</a></li>
         </ul>
       </div>
       <div class="navbar-right">
         <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span> <%= current_user.name %> <span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a>Profile</a></li>
-              <li><%= link_to('Account Settings', edit_user_registration_path) %></li>
-              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-            </ul>
-          </li>
+          <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span> <%= current_user.name %> <span class="glyphicon glyphicon-chevron-down" style="margin-left: 8px;"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a>Profile</a></li>
+                <li><%= link_to('Account Settings', edit_user_registration_path) %></li>
+                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+              </ul>
+            </li>
+          <% else %>
+           <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log in</a>
+              <ul class="dropdown-menu" style="padding: 0%;width: 20vw; border-bottom-right-radius: 10px !important; -moz-border-bottom-right-radius: 10px !important; border-bottom-left-radius: 10px !important; -moz-border-bottom-left-radius: 10px !important;">
+                <li class="panel-heading" style="background-color: #EA5421; color:white; padding-left:3%">Sign into Troop 15's Website</li>
+                <div style="padding: 5%;">
+                  <%= form_for(:user, :url => session_path(:user), :html => {role: "form"}) do |f| %>
+                    <li><div class="form-group">
+                          <%= f.label :email %>
+                          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                        </div>
+                    </li>
+                    <li>
+                       <div class="form-group">
+                        <%= f.label :password %>
+                        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                      </div>
+                    </li>
+                    <li>
+                      <% if devise_mapping.rememberable? %>
+                          <div class="checkbox">
+                            <%= f.label :remember_me do %>
+                            <%= f.check_box :remember_me %>
+                            <%= t('.remember_me', :default => "Remember me") %>
+                        <% end %>
+                          </div>
+                        <% end %>
+                        <%= f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-primary" %>
+                    </li>
+                  <% end %>
+                </div>
+              </ul>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>

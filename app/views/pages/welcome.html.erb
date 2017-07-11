@@ -1,93 +1,139 @@
-<% if user_signed_in? %>
-    <div class="row" style="background-image: url(<%= image_url "forest.jpg" %>); background-size: 100% 100%; background-repeat: no-repeat; padding-top:7%; padding-bottom:26%;">
-      <div class="col-md-5 col-md-offset-1">
+<div class="row" style="margin-top: 1.7vh;">
+  <div class="col-md-5 col-md-offset-1">
+    <div class="panel panel-primary">
+      <div class="panel-heading text-center">
+        <h4>Welcome to Short Hills Troop 15's Website!</h4>
+      </div>
+      <div class="panel-body">
+        The Boy Scouts of America was incorporated on February 8, 1910.  Troop 15 of Short Hills, New Jersey was chartered about sixteen years later, in 1926.  Over the years, Troop 15 has distinguished itself as one of the finest Boy Scout Troops in our area.  The Troop has helped more than 100 Scouts achieve the rank of Eagle Scout.  Scouting teaches values, leadership, and the importance of community service.  Troop 15 is sponsored by Christ Church of Short Hills. <%= link_to "Click here for more info", root_path%>      
+      </div>
+      <ul class="list-group"><li class="list-group-item" style="padding:0%;">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          </ol>
+        
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="<%= image_url "courtofhonor.jpg" %>" alt="...">
+              <div class="carousel-caption">
+                Troop 15's 2014 June Court of Honor
+              </div>
+            </div>
+    
+            <div class="item">
+              <img src="<%= image_url "scoutcamp2017.jpg" %>" alt="...">
+              <div class="carousel-caption">
+                Troop 15's 2017 Week 2 Ockanickon Squad
+              </div>
+            </div>
+            
+            <div class="item">
+              <img src="<%= image_url "plantsale.jpg" %>" alt="...">
+              <div class="carousel-caption">
+                Scouts working hard at Troop 15's annual Mother's day Plant Sale
+              </div>
+            </div>
+            
+            <div class="item">
+              <img src="<%= image_url "parade.jpg" %>" alt="...">
+              <div class="carousel-caption">
+                Scouts from Troop 15 and 17 join to march at the Memorial Day Parade in Millburn
+              </div>
+            </div>
+            
+          </div>
+        
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        </li></ul>
+    </div>
+  </div>
+  
+  <div class="col-md-5">
+    <div class="row">
+      <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="text-center">Announcements</h4>
           </div>
           <ul class="list-group" style="background: rgba(76, 175, 80, 0.3)">
             <% @announcements.each do |announcement| %>
-              <li class="list-group-item" style="background-image: url(<%= image_url "white.png"%>);">
-                <u><b>Title: </b></u> <%= announcement.title %>
-                <h6>Created by: <%= announcement.user.name %></h6>
-                <b>Information:</b>  <%= announcement.information %>
+              <li class="list-group-item" style="padding:0%; margin: 0%; border:0px;">
+                <div class="panel panel-default" style="margin:0%;">
+                  <div class="panel-heading">
+                    <div class="row"><div class="col-md-9"><b><%= announcement.title %></b> (<% if announcement.created_at > Time.now.beginning_of_day %><%="#{time_ago_in_words(announcement.created_at)} ago"%><% else %><%= announcement.created_at.strftime("%b %d, %Y") %><% end %>)</div><div class="col-md-3"><span class="label label-default">By: <%= announcement.user.name %></div></div>
+                  </div>
+                  <div class="panel-body">
+                    
+                    <%= announcement.information %>
+                  </div>
+                </div>
               </li>
             <% end %>
           </ul>
+        </div>
       </div>
     </div>
-    <div class="col-md-5">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h4 class="text-center">Events</h4>
-        </div>
-        <div class="panel-body">
-          Currently Online: <span class="label label-primary">Nikolay Pomytkin</span>
-        </div>
-        <ul class="list-group">
-          <li class="list-group-item">
-            Test message <span class="badge">Nikolay Pomytkin</span>
-          </li>
-          <Li class="list-group-item">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Enter message">
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="button">Send</button>
-                    </span>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-<% else %>
-  <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3" style="margin-top: 8%; margin-bottom: 10%">
+      <div class="col-md-12">
         <div class="panel panel-primary">
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <h2 class="text-center">Troop 15: Short Hills, NJ</h2>
-            </div>
+          <div class="panel-heading">
+            <h4 class="text-center">Recent and Upcoming Events</h4>
           </div>
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <div class="panel-body">
-                <div class="panel panel-primary devise-bs">
+          <ul class="list-group" style="background: rgba(76, 175, 80, 0.3)">
+            <% @events.each do |event| %>
+              <li class="list-group-item" style="padding:0%; margin: 0%; border:0px;">
+                <div class="panel panel-default" style="margin:0%;">
                   <div class="panel-heading">
-                    <h4><%= t('.sign_in', :default => "Sign in") %></h4>
+                    <div class="row"><div class="col-md-9"><b><h4><%= event.title %></b></h4></div><div class="col-md-3"><span class="label label-default">By: <%= event.user.name %></div></div>
                   </div>
-                  <div class="panel-body">
-                  <%= form_for(:user, :url => session_path(:user), :html => {role: "form"}) do |f| %>
-                    <div class="form-group">
-                      <%= f.label :email %>
-                      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-                    </div>
-                    <div class="form-group">
-                      <%= f.label :password %>
-                      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-                    </div>
-                      <% if devise_mapping.rememberable? %>
-                        <div class="checkbox">
-                          <%= f.label :remember_me do %>
-                          <%= f.check_box :remember_me %>
-                          <%= t('.remember_me', :default => "Remember me") %>
-                      <% end %>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <b>Date(s):</b> <%= event.date %>
+                    </li>
+                    <li class="list-group-item" style="padding-top: 0%; padding-bottom: 0%;">
+                      <div class="row" >
+                        <div class="col-md-6"style="padding-top: 1vh; padding-bottom:1vh;">
+                          <b>Details:</b> <%= event.information %>
                         </div>
-                      <% end %>
-                      <%= f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-primary" %>
-                    <% end %>
-                  </div>
+                        <div class="col-md-6" style="border-left: 1px solid #b3b3b3; padding-top: 1vh; padding-bottom:1vh;">
+                          <b>Signed up:</b>
+                            <% if event.signups.any? %>
+                              <ul>
+                                <% event.signups.each do |signup| %>
+                                  <li>
+                                    <%= signup.user.name %>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            <% else %>
+                              <p>
+                                No one has signed up for <b><%= event.title %></b> yet. Be the first!
+                              </p>
+                            <% end %>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-              </div>
-            </div>
-          </div>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-<% end %>
+</div>
