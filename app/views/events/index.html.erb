@@ -44,7 +44,9 @@
 
                 <% css_class = "btn btn-primary" %>
                 <% (css_class << " disabled") if event.signups.where(user: current_user).any? %>
-                <%= button_to "Sign Up for #{event.title}", { action: "create_signup", params: { signup: { user_id: current_user.id, event_id: event.id } } }, { class: css_class, style: "margin-top: 1%;" } %>
+                <% if user_signed_in? %>
+                  <%= button_to "Sign Up for #{event.title}", { action: "create_signup", params: { signup: { user_id: current_user.id, event_id: event.id } } }, { class: css_class, style: "margin-top: 1%;" } %>
+                <% end %>
               </li>
 
               <li class="list-group-item">

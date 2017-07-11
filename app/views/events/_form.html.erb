@@ -40,7 +40,7 @@
           <%= f.label :date %>
           <%= f.text_field :date, :class => 'datepicker' %>
         </div>
-        <%= f.hidden_field :user_id %>
+        <%= f.hidden_field :user_id, :value => current_user.id%>
         <div class="actions">
           <% if current_page?(new_event_path) %>
             <%= f.submit "Create Event", :class => "btn btn-primary"%>
