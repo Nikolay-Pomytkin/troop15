@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def welcome
     @announcements = Announcement.all.last(4)
+    @events = Event.all.last(4)
   end
 
   def gallery

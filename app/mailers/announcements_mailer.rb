@@ -6,7 +6,8 @@ class AnnouncementsMailer < ActionMailer::Base
     @user_email = user_email
     @user_name = user_name
     @body = body
-    mail(from: email, subject: ('[Troop 15 Announcements] ' + title))
+    mail(:to => "nik@pomytkin.com", :from => user_email, subject: title)
+    puts @body
   end
   
 end
