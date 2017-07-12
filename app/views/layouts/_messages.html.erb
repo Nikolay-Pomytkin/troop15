@@ -1,0 +1,20 @@
+
+<% if notice %>
+  <div class="row" style="padding-top: 1vh; padding-bottom: 0%;">
+    <div class="col-md-8 col-md-offset-2">
+    	<div class='alert alert-success alert-dismissable fade in'>
+    		<%= notice %>    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    	</div>
+    </div>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="row" style="padding-top: 1vh;">
+    <div class="col-md-8 col-md-offset-2">
+    	<div class='alert alert-danger alert-dismissable fade in'>
+    		<%= alert %>     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    	</div>
+    </div>
+  </div>
+<% end %>

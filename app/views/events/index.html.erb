@@ -3,11 +3,9 @@
   
   <div class="row" style="margin-bottom: 5%;">
     <div class="col-md-2 col-md-offset-5">
-      <h2>Events</h2>
+      <h1>Events</h1>
     </div>
-    <div class="col-md-2">
-      <%= link_to 'Create an Event', new_event_path, class: "btn btn-info", style: "margin-top: 10%;" %>
-    </div>
+
   </div>
   <% @events.each_slice(3) do |events| %>
     <div class="row">
@@ -62,6 +60,22 @@
             </ul>
           </div>
         </div>
+        <%if event == events.last && user_signed_in? %>
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4 class="text-center">Create an Event</h4>
+              </div>
+              <div class="panel-body">
+                <div style="padding-top: 7vh; padding-bottom: 7vh;">
+                  <%= link_to(new_event_path) do %>
+                    <h1 class="text-center"><span class="glyphicon glyphicon-plus"></span></h1>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
